@@ -20,6 +20,8 @@ const Input = ({config, ...props}: InputProps): ReactElement => {
   const [open, setOpen] = useState(false)
   const onClose = useCallback(() => setOpen(false), [])
   const onOpen = useCallback(() => setOpen(true), [])
+  const autoPlay = props?.schemaType?.options?.autoplay === undefined || !!props?.schemaType?.options?.autoplay
+  const controls = !!props?.schemaType?.options?.controls
 
   return (
     <>
@@ -35,7 +37,8 @@ const Input = ({config, ...props}: InputProps): ReactElement => {
                   height: 'auto',
                   backgroundColor: 'var(--card-skeleton-color-to)',
                 }}
-                autoPlay
+                autoPlay={autoPlay}
+                controls={controls}
                 playsInline
                 muted
                 loop
